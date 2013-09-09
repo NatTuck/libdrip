@@ -120,67 +120,6 @@ lmemcpy(void* src, size_t n)
     return dest;
 }
 
-/* FILE* using I/O ops */
-
-char*
-lgetline(FILE* file)
-{
-    char*  temp = 0;
-    size_t zero = 0;
-
-    if (getline(&temp, &zero, file) == -1) {
-        if (feof(file)) {
-            return 0;
-        }
-        else {
-            perror("getline in lgetline");
-            fflush(stderr);
-            abort();
-        }
-    }
-
-    char* line = lstrdup(temp);
-    free(temp);
-    return line;
-}
-
-char*
-lslurp(const char* filename)
-{
-    size_t ignored;
-    return (char*) lslurpb(filename, &ignored);
-}
-
-void*
-lslurpb(const char* filename, size_t* size_return)
-{
-    const size_t BS = 1024;
-    void* block = alloca(BS);
-    void* data  = GC_malloc_atomic(1);
-
-    size_t count = 0;
-    size_t size  = 0;
-
-    FILE* file = fopen(filename, "r");
-
-    while ((count = fread(block, 1, BS, file))) {
-        data = GC_realloc(data, size + count);
-        memcpy(data + size, block, count);
-        size += count;
-    }
-
-    if (!feof(file)) {
-        perror("Read error in lslurpb");
-        fflush(stderr);
-        abort();
-    }
-
-    fclose(file);
-
-    *size_return = size;
-    return data;
-}
-
 /* Leaky String Vectors */
 
 lstrvec* 

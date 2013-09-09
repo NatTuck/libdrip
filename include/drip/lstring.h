@@ -1,7 +1,5 @@
-#ifndef DRIP_LEAKY_STRING_H
-#define DRIP_LEAKY_STRING_H
-
-#include <stdio.h>
+#ifndef DRIP_LSTRING_H
+#define DRIP_LSTRING_H
 
 #ifdef __cplusplus
 extern "C"
@@ -9,6 +7,7 @@ extern "C"
 #endif
 
 /* Boring string utility functions */
+
 int streq(const char* aa, const char* bb);
 
 /* String operations that assume gc for results. */
@@ -23,13 +22,6 @@ char* lstripc(const char cc, const char* ss);
 /* Leaky void* ops */
 
 void* lmemcpy(void* src, size_t n);
-
-/* IO Operations */
-
-char* lgetline(FILE* file);
-
-char* lslurp(const char* filename);
-void* lslurpb(const char* filename, size_t* size_return);
 
 /* Vector of strings. */
 
@@ -48,7 +40,6 @@ int lstrvec_contains(lstrvec* vec, const char* ss);
 
 lstrvec* lwords(const char* ss);
 lstrvec* lsplitc(const char cc, const char* ss);
-
 
 #ifdef __cplusplus
 }
