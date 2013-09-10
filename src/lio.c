@@ -89,7 +89,14 @@ ldump(const char* filename, const char* text)
 void 
 ldumpb(const char* filename, const void* data, size_t len)
 {
-    FILE* out = fopen(filename, "w");
+    FILE* out = fopen(filename, "wx");
+
+    if (out == 0) {
+        perror("Could not open file for ldumpb");
+        fflush(stderr);
+        abort();
+    }
+
     size_t count = fwrite(data, len, 1, out);
     if (count != 1) {
         fprintf(stderr, "Error dumping data to file '%s':\n", filename);
