@@ -5,6 +5,8 @@
 int
 main(int argc, char* argv[])
 {
-    printf("temp name: %s\n", ltempname("bacon"));
+    char* tmp = ltempname("bacon");
+    printf("temp name: %s\n", tmp); 
+    ldump(tmp, "The quick brown fox\n");
     return 0;
 }

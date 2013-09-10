@@ -123,7 +123,7 @@ ltempname(const char* prefix)
 
     do {
         nn = (nn * 17 + 5) % 0x10000;
-        name = lsprintf("/tmp/%s-%lx", prefix, nn);
+        name = lsprintf("/tmp/%s-%04lx", prefix, nn);
     } while(exists(name));
 
     return name;
