@@ -135,3 +135,24 @@ ltempname(const char* prefix)
 
     return name;
 }
+
+/* System Ops */
+
+char*
+lshell(const char* cmd)
+{
+    char* filename = ltempname("lshell");
+    char* full_cmd = lsprintf("(%s) > %s", cmd, filename);
+
+    int rv = system(full_cmd);
+    
+    if (WEXITSTATUS(rv) != 0) {
+        fprintf(stderr, "lshell(%s) exited with status %d", cmd, WEXITSTATUS(rv));
+        fflush(stderr);
+        abort();
+    }
+
+    char* output = lslurp(filename);
+    unlink(filename);
+    return output;
+}

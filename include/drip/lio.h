@@ -21,6 +21,10 @@ void ldumpb(const char* filename, const void* data, size_t len);
 
 char* ltempname(const char* prefix);
 
+/* System Ops */
+
+char* lshell(const char* cmd);
+
 #ifdef __cplusplus
 }
 #endif

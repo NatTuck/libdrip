@@ -19,7 +19,7 @@ $(LIB): $(OBJS)
 $(OBJS): $(SRCS) $(HDRS)
 
 install:
-	bash -c 'if [ ! -e $(LIB) ]; then echo; echo "Error: Need to build first"; echo; exit 1; fi'
+	@bash -c 'if [ ! -e $(LIB) ]; then echo; echo "Error: Need to build first"; echo; exit 1; fi'
 	mkdir -p $(PREFIX)/include/drip
 	cp $(BASE)/include/drip/*.h $(PREFIX)/include/drip
 	cp $(LIB) $(PREFIX)/lib

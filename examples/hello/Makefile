@@ -1,9 +1,10 @@
 
+BIN := hello
 
-hello: hello.c
-	gcc -L/usr/local/lib -o hello hello.c -ldrip
+$(BIN): $(BIN).c
+	gcc -L/usr/local/lib -o $(BIN) $(BIN).c -ldrip
 
 clean:
-	rm -f hello
+	rm -f $(BIN)
 
 .PHONY: clean

@@ -1,5 +1,5 @@
 
-BIN := tempname
+BIN := shell
 
 $(BIN): $(BIN).c
 	gcc -L/usr/local/lib -o $(BIN) $(BIN).c -ldrip
