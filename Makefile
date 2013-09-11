@@ -1,7 +1,7 @@
 PREFIX := /usr/local
 BASE   := $(shell readlink -f .)
 
-CFLAGS  := -fPIC -std=gnu99 -I$(BASE)/include
+CFLAGS  := -g -fPIC -std=gnu99 -I$(BASE)/include
 LDFLAGS := -shared -fPIC
 LDLIBS  := -lbsd -lgc
 
