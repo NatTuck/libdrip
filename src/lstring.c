@@ -113,7 +113,7 @@ lstripc(const char cc, const char* ss)
 /* Some stuff on void*'s */
 
 void*
-lmemcpy(void* src, size_t n)
+lmemcpy(const void* src, size_t n)
 {
     void* dest = GC_malloc(n);
     memcpy(dest, src, n);

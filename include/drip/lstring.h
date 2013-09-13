@@ -21,7 +21,7 @@ char* lstripc(const char cc, const char* ss);
 
 /* Leaky void* ops */
 
-void* lmemcpy(void* src, size_t n);
+void* lmemcpy(const void* src, size_t n);
 
 /* Vector of strings. */
 
