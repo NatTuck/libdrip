@@ -6,6 +6,8 @@ extern "C"
 {
 #endif
 
+#include <stddef.h>
+
 /* Boring string utility functions */
 
 int streq(const char* aa, const char* bb);
