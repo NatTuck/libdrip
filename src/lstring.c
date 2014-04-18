@@ -22,6 +22,24 @@ streq(const char* aa, const char* bb)
 /* Leaky versions of common string ops */
 
 char*
+lstrdupn(const char* aa, int nn)
+{
+    int mm = strlen(aa);
+
+    if (mm < nn)
+        nn = mm;
+
+    char* bb = GC_malloc(nn + 1);
+    
+    for (int ii = 0; ii < nn; ++ii) {
+        bb[ii] = aa[ii];
+    }
+
+    bb[nn] = 0;
+    return bb;
+}
+
+char*
 lstrdup(const char* aa)
 {
     size_t size = strlen(aa) + 1;

@@ -14,6 +14,7 @@ int streq(const char* aa, const char* bb);
 
 /* String operations that assume gc for results. */
 
+char* lstrdupn(const char* ss, int nn);
 char* lstrdup(const char* ss);
 char* lstrcat(const char* aa, const char* bb);
 char* lsprintf(const char* fmt, ...);
